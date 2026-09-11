@@ -1,6 +1,9 @@
 import json
 import logging
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from typing import Optional
 
 from google import genai
@@ -54,7 +57,7 @@ def analyze_triage(
     text: Optional[str] = None,
 ) -> TriageAssessment:
     """
-    Analyzes patient image and/or text description using Gemini 2.5 Flash.
+    Analyzes patient image and/or text description using Gemini 3.6 Flash.
     Returns a validated TriageAssessment.
     If an error occurs or invalid JSON is returned, gracefully returns the fallback assessment.
     """

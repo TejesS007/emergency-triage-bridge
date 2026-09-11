@@ -1,6 +1,6 @@
 # Emergency Triage Bridge
 
-Emergency Triage Bridge is a mobile-first, high-accessibility web application designed for rapid emergency patient intake and triage assessment. Powered by Google Gemini 2.5 Flash, the system analyzes patient trauma photos or symptom descriptions to categorize clinical severity and extract vital clinical data. It automatically connects with the Google Places API to route patients to the nearest medical facility while generating a standardized shareable summary for first responders.
+Emergency Triage Bridge is a mobile-first, high-accessibility web application designed for rapid emergency patient intake and triage assessment. Powered by Google Gemini 3.6 Flash, the system analyzes patient trauma photos or symptom descriptions to categorize clinical severity and extract vital clinical data. It automatically connects with the Google Places API to route patients to the nearest medical facility while generating a standardized shareable summary for first responders.
 
 ---
 
