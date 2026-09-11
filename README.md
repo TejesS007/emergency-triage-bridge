@@ -4,6 +4,12 @@ Emergency Triage Bridge is a mobile-first, high-accessibility web application de
 
 ---
 
+## Live Deployment
+
+Try it live: **[emergency-triage-bridge.vercel.app](https://emergency-triage-bridge.vercel.app/)**
+
+Deployed on Vercel. The Docker/Cloud Run instructions below are an alternative deployment path, not what's currently running in production.
+
 ## Setup Instructions
 
 ### 1. Prerequisites
