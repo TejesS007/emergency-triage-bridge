@@ -249,6 +249,34 @@ button:focus-visible {
   letter-spacing: 0.5px;
 }
 
+.severity-badge.severity-low,
+.severity-low {
+  background-color: var(--accent-low);
+  color: #000000;
+  border-color: var(--accent-low);
+}
+
+.severity-badge.severity-medium,
+.severity-medium {
+  background-color: var(--accent-medium);
+  color: #000000;
+  border-color: var(--accent-medium);
+}
+
+.severity-badge.severity-high,
+.severity-high {
+  background-color: var(--accent-high);
+  color: #ffffff;
+  border-color: var(--accent-high);
+}
+
+.severity-badge.severity-critical,
+.severity-critical {
+  background-color: var(--accent-critical);
+  color: #ffffff;
+  border-color: var(--accent-critical);
+}
+
 /* Result Cards / Blocks */
 .result-block,
 .detail-box {
