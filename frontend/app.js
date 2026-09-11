@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Render triage results
   function renderResults(data) {
+    resultsSection.classList.remove("hidden");
+    resultsSection.style.display = "";
     const severity = (data.severity || "medium").toLowerCase();
     resultSeverity.textContent = severity.toUpperCase();
     resultSeverity.className = `severity-badge severity-${severity}`;
@@ -194,15 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
     fileInfo.textContent = "";
     hideStatus();
-
-    // 1. Wipe content completely
-    resultsSection.innerHTML = "";
-
-    // 2. Hide using both CSS classes and HTML attributes
     resultsSection.hidden = true;
-    resultsSection.classList.add("hidden");
-    resultsSection.style.display = "none";
-
     copyConfirmation.textContent = "";
   });
 

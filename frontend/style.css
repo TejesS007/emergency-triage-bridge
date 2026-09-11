@@ -1,352 +1,376 @@
-/* 
- * Emergency Triage Bridge - Functional, High-Contrast Stylesheet
- * Strictly zero animations, system fonts only, no design frameworks.
+/*
+ * Emergency Triage Bridge - Pure Functional Dark Mode Stylesheet
+ * Single accent color tied to severity on result card left borders.
+ * Zero animations, system font only, no gradients, no glassmorphism.
  */
 
 :root {
+  /* Functional Pure Dark Mode Palette */
   --bg-primary: #121212;
   --bg-surface: #1e1e1e;
-  --bg-surface-elevated: #2a2a2a;
+  --bg-surface-elevated: #282828;
+
   --text-primary: #ffffff;
-  --text-secondary: #e0e0e0;
-  --text-muted: #a0a0a0;
-  --border-color: #4a4a4a;
-  --focus-ring: #00e5ff;
+  --text-secondary: #d4d4d4;
+  --text-muted: #999999;
 
-  --color-low: #2e7d32;
-  --color-low-text: #ffffff;
-  --color-medium: #f57f17;
-  --color-medium-text: #000000;
-  --color-high: #e65100;
-  --color-high-text: #ffffff;
-  --color-critical: #d50000;
-  --color-critical-text: #ffffff;
+  --border-color: #3e3e3e;
+  --focus-ring: #ffffff;
 
-  --btn-primary-bg: #005fb8;
-  --btn-primary-text: #ffffff;
-  --btn-secondary-bg: #333333;
+  /* Severity Accent Colors (Used strictly for result card left borders) */
+  --accent-low: #22c55e;
+  /* Green for low severity */
+  --accent-medium: #f59e0b;
+  /* Amber for medium severity */
+  --accent-high: #ef4444;
+  /* Red for high severity */
+  --accent-critical: #ef4444;
+  /* Red for critical severity */
+
+  /* Neutral Functional Controls */
+  --btn-primary-bg: #ffffff;
+  --btn-primary-text: #121212;
+  --btn-secondary-bg: #282828;
   --btn-secondary-text: #ffffff;
-  --btn-secondary-border: #777777;
-
-  --error-bg: #b00020;
-  --error-text: #ffffff;
+  --btn-disabled-bg: #333333;
+  --btn-disabled-text: #777777;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* Disable animations and transitions */
+  /* Disable all animations, transitions, and keyframes */
   transition: none !important;
   animation: none !important;
+  font-family: inherit;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.7;
   font-size: 16px;
-  padding: 12px;
+  padding: 20px 16px;
 }
 
 .app-container {
-  max-width: 680px;
+  max-width: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 /* Header */
 .app-header {
   background-color: var(--bg-surface);
-  border: 2px solid var(--border-color);
-  padding: 16px;
+  border: 1px solid var(--border-color);
+  padding: 24px 28px;
   text-align: left;
 }
 
 .app-header h1 {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 4px;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 8px;
 }
 
 .subtitle {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 /* Main Cards */
 .triage-card {
   background-color: var(--bg-surface);
-  border: 2px solid var(--border-color);
-  padding: 20px;
+  border: 1px solid var(--border-color);
+  padding: 28px;
 }
 
 .triage-card h2 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 8px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  line-height: 1.4;
 }
 
 /* Form Groups */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 22px;
 }
 
 .form-label {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-primary);
+  line-height: 1.5;
 }
 
 .file-input {
   font-size: 0.95rem;
   color: var(--text-primary);
-  padding: 8px;
+  padding: 12px 14px;
   background-color: var(--bg-surface-elevated);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
+  line-height: 1.5;
 }
 
 .file-info {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   margin-top: 4px;
+  line-height: 1.5;
 }
 
 .text-input {
-  font-family: inherit;
   font-size: 1rem;
   color: var(--text-primary);
   background-color: var(--bg-surface-elevated);
-  border: 2px solid var(--border-color);
-  padding: 10px;
+  border: 1px solid var(--border-color);
+  padding: 14px 16px;
   resize: vertical;
+  line-height: 1.7;
 }
 
-/* Interactive States & Focus Rings */
+/* Focus States */
 input:focus-visible,
 textarea:focus-visible,
 button:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
-/* Buttons */
+/* Form Actions & Buttons */
 .form-actions {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
+  margin-top: 8px;
 }
 
 .primary-button {
   background-color: var(--btn-primary-bg);
   color: var(--btn-primary-text);
-  border: 2px solid #ffffff;
-  padding: 12px 20px;
+  border: 1px solid var(--btn-primary-bg);
+  padding: 14px 26px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  line-height: 1.4;
 }
 
 .primary-button:hover {
-  background-color: #004488;
+  background-color: #e5e5e5;
+  border-color: #e5e5e5;
 }
 
 .primary-button:disabled {
-  background-color: #555555;
-  color: #aaaaaa;
+  background-color: var(--btn-disabled-bg);
+  color: var(--btn-disabled-text);
+  border-color: var(--border-color);
   cursor: not-allowed;
-  border-color: #777777;
 }
 
 .secondary-button {
   background-color: var(--btn-secondary-bg);
   color: var(--btn-secondary-text);
-  border: 2px solid var(--btn-secondary-border);
-  padding: 12px 18px;
+  border: 1px solid var(--border-color);
+  padding: 14px 22px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  line-height: 1.4;
 }
 
 .secondary-button:hover {
-  background-color: #444444;
+  background-color: #383838;
 }
 
 /* Status Banner */
 .status-banner {
-  margin-top: 16px;
-  padding: 12px;
+  margin-top: 20px;
+  padding: 16px 20px;
   font-weight: 600;
-  border: 2px solid #ffffff;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid #ffffff;
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
 .status-banner.error {
-  background-color: var(--error-bg);
-  color: var(--error-text);
+  border-left: 4px solid var(--accent-critical);
 }
 
 .status-banner.info {
-  background-color: #0d47a1;
-  color: #ffffff;
+  border-left: 4px solid #ffffff;
 }
 
-/* Results Display */
+/* Results Section Layout */
 .results-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .result-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  padding-bottom: 4px;
 }
 
 .result-label {
   font-size: 1.1rem;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .severity-badge {
   display: inline-block;
-  font-size: 1.1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border: 2px solid #ffffff;
-}
-
-.severity-low {
-  background-color: var(--color-low);
-  color: var(--color-low-text);
-}
-
-.severity-medium {
-  background-color: var(--color-medium);
-  color: var(--color-medium-text);
-}
-
-.severity-high {
-  background-color: var(--color-high);
-  color: var(--color-high-text);
-}
-
-.severity-critical {
-  background-color: var(--color-critical);
-  color: var(--color-critical-text);
-}
-
-.result-block {
-  background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-color);
-  padding: 14px;
-}
-
-.result-block-title {
   font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 6px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  background-color: var(--bg-surface-elevated);
   color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  letter-spacing: 0.5px;
+}
+
+/* Result Cards / Blocks */
+.result-block,
+.detail-box {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--border-color);
+  padding: 18px 22px;
+}
+
+/* Severity-based Accent Color on Left Border of Result Cards */
+.results-section:has(.severity-low) .result-block,
+.results-section:has(.severity-low) .detail-box {
+  border-left: 4px solid var(--accent-low);
+}
+
+.results-section:has(.severity-medium) .result-block,
+.results-section:has(.severity-medium) .detail-box {
+  border-left: 4px solid var(--accent-medium);
+}
+
+.results-section:has(.severity-high) .result-block,
+.results-section:has(.severity-high) .detail-box,
+.results-section:has(.severity-critical) .result-block,
+.results-section:has(.severity-critical) .detail-box {
+  border-left: 4px solid var(--accent-critical);
+}
+
+.result-block-title,
+.detail-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  line-height: 1.4;
 }
 
 .result-text {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 .highlight-action {
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* Details Grid */
 .details-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 16px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 520px) {
   .details-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.detail-box {
-  background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-color);
-  padding: 12px;
-}
-
-.detail-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
 .detail-list {
-  padding-left: 20px;
-  font-size: 0.9rem;
+  padding-left: 22px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.detail-list li {
+  margin-bottom: 4px;
+}
+
+/* Hospital Information */
+.hospital-info p {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 
-/* Hospital Section */
-.hospital-block {
-  border-left: 6px solid #00e5ff;
+.hospital-info strong {
+  color: var(--text-primary);
 }
 
-.hospital-info p {
-  margin-bottom: 4px;
-  font-size: 0.95rem;
-}
-
-/* Shareable Section */
+/* Shareable Summary */
 .share-block {
-  border-top: 2px solid var(--border-color);
+  margin-top: 4px;
 }
 
 .shareable-textarea {
   width: 100%;
-  font-family: monospace;
-  font-size: 0.9rem;
-  background-color: #000000;
-  color: #00ff66;
+  font-size: 0.95rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   border: 1px solid var(--border-color);
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  resize: vertical;
 }
 
 .share-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .share-button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 0.95rem;
 }
 
 .copy-confirm {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #00ff66;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* Footer */
 .app-footer {
   text-align: center;
-  padding: 12px;
-  font-size: 0.85rem;
+  padding: 16px 12px;
+  font-size: 0.9rem;
   color: var(--text-muted);
+  line-height: 1.5;
 }
