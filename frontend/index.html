@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Triage Bridge</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header role="banner" class="app-header">
+      <h1>Emergency Triage Bridge</h1>
+      <p class="subtitle">Immediate clinical triage assessment and nearest hospital routing</p>
+    </header>
+
+    <main role="main">
+      <!-- Input Section -->
+      <section class="triage-card input-section" aria-labelledby="intake-heading">
+        <h2 id="intake-heading">Patient Intake</h2>
+        
+        <form id="triage-form" novalidate>
+          <!-- Photo Upload Input -->
+          <div class="form-group">
+            <label for="photo-input" class="form-label">
+              Upload Trauma / Symptom Photo (JPEG or PNG, max 5MB)
+            </label>
+            <input 
+              type="file" 
+              id="photo-input" 
+              name="photo" 
+              accept="image/jpeg,image/png" 
+              aria-label="Upload patient trauma or symptom photo"
+              class="file-input"
+            />
+            <div id="file-info" class="file-info" aria-live="polite"></div>
+          </div>
+
+          <!-- Symptom Description Fallback -->
+          <div class="form-group">
+            <label for="symptom-input" class="form-label">
+              Symptom Description / Voice Fallback Notes
+            </label>
+            <textarea 
+              id="symptom-input" 
+              name="symptoms" 
+              rows="4" 
+              placeholder="Describe symptoms, vital signs, duration, or patient responses..." 
+              aria-label="Patient symptom description and clinical notes"
+              class="text-input"
+            ></textarea>
+          </div>
+
+          <!-- Submit Action -->
+          <div class="form-actions">
+            <button 
+              type="submit" 
+              id="analyze-button" 
+              class="primary-button" 
+              aria-label="Analyze patient symptoms and evaluate triage"
+            >
+              Analyze Emergency Case
+            </button>
+            <button 
+              type="button" 
+              id="reset-button" 
+              class="secondary-button" 
+              aria-label="Clear form and reset analysis"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+
+        <!-- Status & Errors -->
+        <div id="status-message" class="status-banner" role="status" aria-live="assertive" hidden></div>
+      </section>
+
+      <!-- Results Section -->
+      <section 
+        id="results-section" 
+        class="triage-card results-section" 
+        aria-labelledby="results-heading" 
+        hidden
+      >
+        <h2 id="results-heading">Triage Assessment Results</h2>
+
+        <!-- Severity Indicator Badge -->
+        <div class="result-row">
+          <span class="result-label">Severity Level:</span>
+          <span id="result-severity" class="severity-badge" aria-label="Triage severity level">--</span>
+        </div>
+
+        <!-- Condition Summary -->
+        <div class="result-block">
+          <h3 class="result-block-title">Condition Summary</h3>
+          <p id="result-condition" class="result-text">--</p>
+        </div>
+
+        <!-- Recommended Action -->
+        <div class="result-block">
+          <h3 class="result-block-title">Recommended Action</h3>
+          <p id="result-action" class="result-text highlight-action">--</p>
+        </div>
+
+        <!-- Medications & Allergies Grid -->
+        <div class="details-grid">
+          <div class="detail-box">
+            <h4 class="detail-title">Detected Medications</h4>
+            <ul id="result-medications" class="detail-list" aria-label="List of medications">
+              <li>None reported</li>
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h4 class="detail-title">Known Allergies</h4>
+            <ul id="result-allergies" class="detail-list" aria-label="List of allergies">
+              <li>None reported</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Nearest Hospital Info -->
+        <div class="result-block hospital-block">
+          <h3 class="result-block-title">Nearest Emergency Facility</h3>
+          <div class="hospital-info">
+            <p><strong>Facility Name:</strong> <span id="hospital-name">--</span></p>
+            <p><strong>Distance:</strong> <span id="hospital-distance">--</span></p>
+            <p id="hospital-address-wrapper" hidden><strong>Address:</strong> <span id="hospital-address">--</span></p>
+          </div>
+        </div>
+
+        <!-- Shareable Summary & Clipboard -->
+        <div class="result-block share-block">
+          <h3 class="result-block-title">Shareable Clinical Summary</h3>
+          <textarea 
+            id="shareable-text" 
+            class="shareable-textarea" 
+            readonly 
+            rows="6" 
+            aria-label="Formatted shareable clinical summary text"
+          ></textarea>
+          <div class="share-actions">
+            <button 
+              type="button" 
+              id="copy-summary-button" 
+              class="primary-button share-button" 
+              aria-label="Copy shareable clinical summary to clipboard"
+            >
+              Copy Summary
+            </button>
+            <span id="copy-confirmation" class="copy-confirm" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo" class="app-footer">
+      <p>Emergency Triage Bridge &bull; Immediate Patient Intake &bull; Bangalore Station Reference</p>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

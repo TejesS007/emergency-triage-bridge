@@ -1,0 +1,352 @@
+/* 
+ * Emergency Triage Bridge - Functional, High-Contrast Stylesheet
+ * Strictly zero animations, system fonts only, no design frameworks.
+ */
+
+:root {
+  --bg-primary: #121212;
+  --bg-surface: #1e1e1e;
+  --bg-surface-elevated: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --border-color: #4a4a4a;
+  --focus-ring: #00e5ff;
+
+  --color-low: #2e7d32;
+  --color-low-text: #ffffff;
+  --color-medium: #f57f17;
+  --color-medium-text: #000000;
+  --color-high: #e65100;
+  --color-high-text: #ffffff;
+  --color-critical: #d50000;
+  --color-critical-text: #ffffff;
+
+  --btn-primary-bg: #005fb8;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #333333;
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-border: #777777;
+
+  --error-bg: #b00020;
+  --error-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Disable animations and transitions */
+  transition: none !important;
+  animation: none !important;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 16px;
+  padding: 12px;
+}
+
+.app-container {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+.app-header {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  padding: 16px;
+  text-align: left;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* Main Cards */
+.triage-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  padding: 20px;
+}
+
+.triage-card h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.file-input {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  padding: 8px;
+  background-color: var(--bg-surface-elevated);
+  border: 2px solid var(--border-color);
+}
+
+.file-info {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.text-input {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-surface-elevated);
+  border: 2px solid var(--border-color);
+  padding: 10px;
+  resize: vertical;
+}
+
+/* Interactive States & Focus Rings */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-button {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 2px solid #ffffff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background-color: #004488;
+}
+
+.primary-button:disabled {
+  background-color: #555555;
+  color: #aaaaaa;
+  cursor: not-allowed;
+  border-color: #777777;
+}
+
+.secondary-button {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background-color: #444444;
+}
+
+/* Status Banner */
+.status-banner {
+  margin-top: 16px;
+  padding: 12px;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+}
+
+.status-banner.error {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+}
+
+.status-banner.info {
+  background-color: #0d47a1;
+  color: #ffffff;
+}
+
+/* Results Display */
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.result-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.severity-badge {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 2px solid #ffffff;
+}
+
+.severity-low {
+  background-color: var(--color-low);
+  color: var(--color-low-text);
+}
+
+.severity-medium {
+  background-color: var(--color-medium);
+  color: var(--color-medium-text);
+}
+
+.severity-high {
+  background-color: var(--color-high);
+  color: var(--color-high-text);
+}
+
+.severity-critical {
+  background-color: var(--color-critical);
+  color: var(--color-critical-text);
+}
+
+.result-block {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  padding: 14px;
+}
+
+.result-block-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.result-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.highlight-action {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.detail-box {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+}
+
+.detail-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.detail-list {
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Hospital Section */
+.hospital-block {
+  border-left: 6px solid #00e5ff;
+}
+
+.hospital-info p {
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+/* Shareable Section */
+.share-block {
+  border-top: 2px solid var(--border-color);
+}
+
+.shareable-textarea {
+  width: 100%;
+  font-family: monospace;
+  font-size: 0.9rem;
+  background-color: #000000;
+  color: #00ff66;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.share-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.share-button {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+}
+
+.copy-confirm {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #00ff66;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

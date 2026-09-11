@@ -1,0 +1,10 @@
+[
+  "tests/test_schema.py::test_analyze_endpoint_invalid_file_type",
+  "tests/test_schema.py::test_analyze_endpoint_no_input_returns_400",
+  "tests/test_schema.py::test_analyze_endpoint_oversized_file",
+  "tests/test_schema.py::test_analyze_endpoint_with_text_only_input",
+  "tests/test_schema.py::test_fallback_assessment_is_valid_schema",
+  "tests/test_schema.py::test_invalid_severity_value_raises_validation_error",
+  "tests/test_schema.py::test_missing_required_field_raises_validation_error",
+  "tests/test_schema.py::test_valid_input_passes_validation"
+]
